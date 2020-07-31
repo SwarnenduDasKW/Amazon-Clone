@@ -4,6 +4,7 @@ import {Link, useHistory} from "react-router-dom";
 import {auth} from "./Firebase";
 
 function Login() {
+    // This will be used for redirection. Listen to user login
     const history = useHistory();
 
     const [email,setEmail] = React.useState("");
@@ -16,6 +17,7 @@ function Login() {
         auth.signInWithEmailAndPassword(email,password)
             .then((auth) => {
                 //logged in redirect to homepage
+                history.push('/');
             })
             .catch((e) => alert(e.message));
     };
@@ -26,7 +28,7 @@ function Login() {
         //do the register logic here
         auth.createUserWithEmailAndPassword(email,password)
             .then((auth) => {
-                //created a user and logged in, redirec to homepage
+                //created a user and logged in, redirect to homepage
                 history.push('/');
             })
             .catch((e) => alert(e.message));

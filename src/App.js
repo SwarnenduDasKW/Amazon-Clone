@@ -10,7 +10,7 @@ import { auth } from './Firebase';
 
 function App() {
 
-  const [{user},dispath] = useStateValue();
+  const [{user},dispatch] = useStateValue();
   // useEffect ---->>>>> POWERFUL
   // Pice of code which runs based on a given condition
 
@@ -20,13 +20,13 @@ function App() {
       console.log("AuthUser is >>>",authUser);
       if(authUser){
         // the user is logged in
-        React.dispatch({
+        dispatch({
           type: "SET_USER",
           user: authUser
         })
       } else {
         // the user is logged out
-        React.dispatch({
+        dispatch({
           type: "SET_USER",
           user: null,
         });
